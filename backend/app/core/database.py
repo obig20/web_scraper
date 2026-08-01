@@ -14,15 +14,12 @@ engine = create_async_engine(
     settings.database_url,
     echo=settings.debug,
     pool_pre_ping=True,
-    pool_size=20,
-    max_overflow=10,
 )
 
 sync_engine = create_engine(
     settings.database_url_sync,
     echo=settings.debug,
     pool_pre_ping=True,
-    pool_size=10,
 )
 
 AsyncSessionLocal = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
